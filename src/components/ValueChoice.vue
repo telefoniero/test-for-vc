@@ -47,31 +47,3 @@ export default {
   }
 }
 </script>
-
-<style>
-  .vue-range-slider.slider-component .slider-tooltip-wrap.slider-tooltip-top {
-    left: calc(50% - 5px);
-    top: -16px;
-  }
-
-  .vue-range-slider.slider-component .slider-tooltip-wrap .slider-tooltip {
-    padding: 4px 6px;
-    border: none;
-    min-width: 0;
-    font-size: 1rem;
-    line-height: 19px;
-    background-color: #FE4D4A;
-  }
-
-  .vue-range-slider.slider-component .slider-tooltip-wrap.slider-tooltip-top .slider-tooltip::before {
-    transform: none;
-    border-top-color: #FE4D4A;
-  }
-
-  .vue-range-slider.slider-component .slider .slider-dot {
-    box-shadow: none;
-    border: 8px solid #FE4D4A;
-    top: -8px!important;
-    left: -8px;
-  }
-</style>

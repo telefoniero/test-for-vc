@@ -1,0 +1,27 @@
+.vue-range-slider.slider-component {
+  .slider-tooltip-wrap {
+    &.slider-tooltip-top {
+      left: calc(50% - 5px);
+      top: -16px;
+      .slider-tooltip::before {
+        transform: none;
+        border-top-color: #fe4d4a;
+      }
+    }
+
+    .slider-tooltip {
+      padding: 4px 6px;
+      border: none;
+      min-width: 0;
+      font-size: 1rem;
+      line-height: 19px;
+      background-color: #fe4d4a;
+    }
+  }
+  .slider .slider-dot {
+    box-shadow: none;
+    border: 8px solid #fe4d4a;
+    top: -8px !important;
+    left: -8px;
+  }
+}

@@ -51,6 +51,10 @@ module.exports = {
         }
       },
       {
+        test: /\.s[ac]ss$/,
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader']
+      },
+      {
         test: /\.vue$/,
         use: ['vue-loader']
       },
@@ -65,10 +69,6 @@ module.exports = {
       {
         test: /\.(ttf|woff|woff2|eot|otf)$/,
         use: ['file-loader']
-      },
-      {
-        test: /\.s[ac]ss$/,
-        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader']
       }
     ]
   }

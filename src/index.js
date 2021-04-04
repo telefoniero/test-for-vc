@@ -1,3 +1,4 @@
+import './styles/main.scss'
 const Vue = require('vue')
 import App from './App.vue'
 

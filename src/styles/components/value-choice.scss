@@ -1,0 +1,32 @@
+.value-choice {
+  &__title {
+    margin-bottom: 11px;
+  }
+
+  &__text {
+    margin-bottom: 42px;
+    display: block;
+  }
+
+  &__value-range {
+    margin-bottom: 45px;
+  }
+}
+
+.value-range {
+  display: flex;
+  align-items: center;
+
+  &__limit {
+    flex-shrink: 0;
+    font-weight: 500;
+
+    &:first-child {
+      margin-right: 10px;
+    }
+
+    &:last-child {
+      margin-left: 10px;
+    }
+  }
+}

@@ -13,10 +13,10 @@
           <range-slider
             class="value-range__range" 
             type="range" 
-            v-model="value" 
+            v-model="value"
+            width="100%"
             :min="limits[0]"  
             :max="limits[1]"
-            width="100%"
             height="9"
             :dot-size="9"
             formatter="{value} ₽"
@@ -49,25 +49,6 @@ export default {
 </script>
 
 <style>
-  .value-choice__title{
-    margin-bottom: 11px;
-  }
-
-  .value-choice__text {
-    margin-bottom: 42px;
-    display: block;
-  }
-
-  .value-range {
-    display: flex;
-    align-items: center;
-  }
-
-  .value-range__limit {
-    flex-shrink: 0;
-    font-weight: 500;
-  }
-
   .vue-range-slider.slider-component .slider-tooltip-wrap.slider-tooltip-top {
     left: calc(50% - 5px);
     top: -16px;
@@ -91,5 +72,6 @@ export default {
     box-shadow: none;
     border: 8px solid #FE4D4A;
     top: -8px!important;
+    left: -8px;
   }
 </style>

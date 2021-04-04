@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import ValueChoice from './components/ValueRange.vue'
+import ValueChoice from './components/ValueChoice.vue'
 export default {
   components: {
     ValueChoice
@@ -17,60 +17,3 @@ export default {
   }
 }
 </script>
-
-<style>
-  * {
-    padding: 0;
-    margin: 0;
-  }
-  @font-face {
-    font-family: "Roboto";
-    src: url("./assets/fonts/Roboto-Bold.eot"),
-          url("./assets/fonts/Roboto-Bold.woff") format("woff"),
-          url("./assets/fonts/Roboto-Bold.ttf") format("truetype"),
-          url("./assets/fonts/Roboto-Bold.otf") format("opentype");
-    font-weight: bold;
-  }
-
-  @font-face {
-    font-family: "Roboto";
-    src: url("./assets/fonts/Roboto-Medium.eot"),
-          url("./assets/fonts/Roboto-Medium.woff") format("woff"),
-          url("./assets/fonts/Roboto-Medium.ttf") format("truetype"),
-          url("./assets/fonts/Roboto-Medium.otf") format("opentype");
-    font-weight: 500;
-  }
-
-  @font-face {
-    font-family: "Roboto";
-    src: url("./assets/fonts/Roboto-Regular.eot"),
-          url("./assets/fonts/Roboto-Regular.woff") format("woff"),
-          url("./assets/fonts/Roboto-Regular.ttf") format("truetype"),
-          url("./assets/fonts/Roboto-Regular.otf") format("opentype");
-    font-weight: 400;
-  }
-
-  body {
-    font-family: 'Roboto', sans-serif;
-  }
-
-  .title {
-    font-weight: 500;
-    font-size: 22px;
-    line-height: 26px;
-  }
-  .text {
-    font-weight: normal;
-    font-size: 16px;
-    line-height: 19px;
-  }
-
-  .container {
-    max-width: 640px;
-    margin: 0 auto;
-  }
-
-  .wrapper {
-    padding: 16px 25px 0;
-  }
-</style>

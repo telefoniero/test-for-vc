@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "description": "Test widget for vc.ru",
   "main": "index.js",
+  "private": true,
   "scripts": {
-    "dev": "webpack-dev-server --hot --open mode --development",
+    "dev": "webpack --mode development --watch",
     "build": "webpack --mode production"
   },
   "browserslist": "> 0.25%, not dead",
@@ -35,10 +36,10 @@
     "vue-loader": "^15.9.6",
     "vue-template-compiler": "^2.6.12",
     "webpack": "^5.28.0",
-    "webpack-cli": "^4.6.0",
-    "webpack-dev-server": "^3.11.2"
+    "webpack-cli": "^4.6.0"
   },
   "dependencies": {
-    "file-loader": "^6.2.0"
+    "file-loader": "^6.2.0",
+    "vue": "^2.6.12"
   }
 }

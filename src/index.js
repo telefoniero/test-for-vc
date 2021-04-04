@@ -1,2 +1,7 @@
-import './styles/styles.css'
-console.log('Hello World!')
+const Vue = require('vue')
+import App from './App.vue'
+
+const app = new Vue({
+  el: '#app',
+  render: h => h(App)
+})

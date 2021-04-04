@@ -4,32 +4,32 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const { VueLoaderPlugin } = require('vue-loader')
 
-const envMode = process.env.NODE_ENV === 'development'
+let devMode = process.env.npm_lifecycle_event === 'dev'
 
 module.exports = {
   context: path.resolve(__dirname, 'src'),
-  mode: 'development',
   entry: './index.js',
   output: {
     filename: '[name].js',
     path: path.resolve(__dirname, 'dist')
-  },
-  devServer: {
-    contentBase: path.resolve(__dirname, 'src'),
-    port: 4200,
-    hot: envMode
   },
   optimization: {
     splitChunks: {
       chunks: 'all'
     }
   },
-  target: 'browserslist',
+  resolve: {
+    alias: {
+      vue: devMode ? 'vue/dist/vue.js' : 'vue/dist/vue.min.js'
+    }
+  },
   plugins: [
     new HtmlWebpackPlugin({
       template: './index.html',
+      scriptLoading: 'defer',
+      inject: 'body',
       minify: {
-        collapseWhitespace: envMode
+        collapseWhitespace: !devMode
       }
     }),
     new CleanWebpackPlugin(),
@@ -56,7 +56,7 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: [MiniCssExtractPlugin.loader,'css-loader']
+        use: [MiniCssExtractPlugin.loader, 'css-loader']
       },
       {
         test: /\.(png|jpg|svg|gif)$/,
@@ -68,7 +68,7 @@ module.exports = {
       },
       {
         test: /\.s[ac]ss$/,
-        use: [MiniCssExtractPlugin.loader,'css-loader', 'sass-loader']
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader']
       }
     ]
   }

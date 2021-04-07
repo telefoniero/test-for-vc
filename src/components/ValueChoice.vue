@@ -10,20 +10,26 @@
         </span>
         <div class="value-choice__value-range value-range">
           <span class="value-range__limit">{{limits[0]}} &#8381;</span>
-          <range-slider
-            class="value-range__range" 
-            type="range" 
-            v-model="value"
+          <vue-slider 
+            v-model="value" 
             width="100%"
-            :min="limits[0]"  
+            height="9px"
+            :lazy="true"
+            dotSize="25"
+            :min="limits[0]"
             :max="limits[1]"
-            height="9"
-            :dot-size="9"
-            formatter="{value} ₽"
-            :bg-style="{borderRadius: '8px'}"
-            :process-style="{background: 'linear-gradient(90deg, #FF9796 4.65%, #FE4D4A 101.3%)'}"
+            @change="passValue"
           >
-          </range-slider>
+          <template v-slot:dot>
+            <div class="value-range__dot"></div>
+          </template>
+          <template v-slot:tooltip="{ value }">
+            <div class="value-range__tooltip">{{ value + ' ₽'}}</div>
+          </template>
+          <template v-slot:process="{style}">
+            <div class="value-range__process" :style="[style]"></div>
+          </template>
+          </vue-slider>
           <span class="value-range__limit">{{limits[1]}} &#8381;</span>
         </div>
       </div>
@@ -32,18 +38,22 @@
 </template>
 
 <script>
-import 'vue-range-component/dist/vue-range-slider.css'
-import RangeSlider from 'vue-range-component'
+import VueSlider from 'vue-slider-component'
 
 export default {
   data() {
     return {
       limits: [0, 50000],
-      value: 0
+      value: 0,
     }
   },
   components: {
-    RangeSlider
+    VueSlider
+  },
+  methods: {
+    passValue() {
+      this.$emit('pass-value', this.value)
+    }
   }
 }
 </script>

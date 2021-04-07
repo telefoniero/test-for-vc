@@ -1,0 +1,28 @@
+.toggle-btn {
+  &__container {
+    background-color: $mainPink;
+    padding: 25px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  &__btn {
+    background-color: transparent;
+    border: none;
+    color: $mainOrange;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    span {
+      margin-right: 15px;
+    }
+    svg {
+      transition: 0.5s;
+    }
+    &.opened {
+      svg {
+        transform: rotate(180deg);
+      }
+    }
+  }
+}

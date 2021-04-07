@@ -3,6 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const { VueLoaderPlugin } = require('vue-loader')
+const { CopyWebpackPlugin } = require('copy-webpack-plugin')
 
 let devMode = process.env.npm_lifecycle_event === 'dev'
 
@@ -64,11 +65,24 @@ module.exports = {
       },
       {
         test: /\.(png|jpg|svg|gif)$/,
-        use: ['file-loader']
+        use: {
+          loader: 'file-loader',
+          options: {
+            name: '[name].[ext]',
+            outputPath: 'assets/img',
+            publicPath: 'assets/img',
+            esModule: false
+          }
+        }
       },
       {
         test: /\.(ttf|woff|woff2|eot|otf)$/,
-        use: ['file-loader']
+        use: {
+          loader: 'file-loader',
+          options: {
+            outputPath: 'fonts'
+          }
+        }
       }
     ]
   }

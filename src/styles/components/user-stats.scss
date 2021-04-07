@@ -1,0 +1,73 @@
+.user-stats {
+  background-color: $mainPink;
+  overflow: hidden;
+  transition: 0.5s;
+  max-height: 100%;
+  &__average {
+    margin: 25px 0;
+  }
+  &__infographics {
+    display: flex;
+    align-items: center;
+    padding: 0 80px;
+  }
+  &.hidden {
+    max-height: 0;
+  }
+}
+
+.stats-item {
+  &__display {
+    margin-bottom: 9px;
+    position: relative;
+  }
+}
+.average-value {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  &__display {
+    width: 200px;
+    height: 200px;
+    background-color: #fff6f8;
+    border-radius: 50%;
+  }
+
+  &__image {
+    position: absolute;
+    left: calc(50% + 3px);
+    transform: translate(-50%);
+    bottom: 70px;
+  }
+
+  &__value {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    bottom: 28px;
+    font-size: 22px;
+    font-weight: bold;
+    color: $mainOrange;
+    white-space: nowrap;
+  }
+}
+
+.infographics {
+  &__item {
+    margin-right: 100px;
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+  &__text {
+    font-weight: bold;
+    color: $mainOrange;
+    text-align: center;
+    display: block;
+    text-align: center;
+  }
+  &__display {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}

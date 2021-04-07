@@ -22,11 +22,55 @@
     font-weight: 500;
 
     &:first-child {
-      margin-right: 10px;
+      margin-right: 18px;
     }
 
     &:last-child {
-      margin-left: 10px;
+      margin-left: 18px;
     }
   }
+
+  &__dot {
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+    box-sizing: border-box;
+    border: 8px solid $mainOrange;
+    background-color: #fff;
+    cursor: pointer;
+    transition: 0.5s;
+  }
+
+  &__tooltip {
+    color: #fff;
+    background-color: $mainOrange;
+    padding: 4px 6px;
+    border-radius: 5px;
+    white-space: nowrap;
+    position: relative;
+    left: -5px;
+    cursor: pointer;
+    &::after {
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      height: 0;
+      width: 0;
+      border-color: transparent;
+      border-style: solid;
+      border-width: 5px;
+      border-top-color: $mainOrange;
+    }
+  }
+
+  &__process {
+    background: linear-gradient(90deg, #ff9796 4.65%, $mainOrange 101.3%);
+    border-radius: 8px;
+  }
+}
+
+.vue-slider-dot:focus .value-range__dot,
+.vue-slider-dot:hover .value-range__dot {
+  box-shadow: 0px 9px 10px rgba(254, 77, 74, 0.1);
 }

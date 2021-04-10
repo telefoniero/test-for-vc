@@ -17,8 +17,11 @@
         :averageSum="averageSum"
         :percentageOverThousand="percentageOverThousand"
         :percentageOverTenThousand="percentageOverTenThousand"
+        :shown="statsShown"
         ></user-stats>
-      <toggle-btn></toggle-btn>
+      <toggle-btn
+        @toggle-height="toggleStatsHeight"
+      ></toggle-btn>
       <div class="info-frame__info-btns info-btns">
         <span class="info-btns__text text">
           Как начать инвестировать?
@@ -67,6 +70,11 @@ export default {
   data() {
     return {
       statsShown: false
+    }
+  },
+  methods: {
+    toggleStatsHeight(value) {
+      this.statsShown = value
     }
   }
 }

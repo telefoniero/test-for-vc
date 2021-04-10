@@ -1,6 +1,11 @@
 <template>
-  <transition name="">
-    <div class="user-stats">
+  <transition 
+    name="expand"
+    @enter="enter"
+    @after-enter="afterEnter"
+    @leave="leave"
+  >
+    <div class="user-stats" v-if="shown">
       <div class="user-stats__average average-value stats-item">
         <div class="stats-item__display average-value__display">
           <img :src="image" alt="" class="average-value__image">
@@ -16,13 +21,14 @@
         <div class="infographics__item">
           <div class="infographics__display stats-item__display">
             <vc-donut
+              class="infographics__donut"
               background="#FEEBEF"
               foreground="#fff"
               :total="100"
               :size="126"
               :thickness="20"
               unit="px"
-              :sections="[{value: percentageOverThousand}]"
+              :sections="[{value: percentageOverThousand, color: '#FE4D4A'}]"
             >
             </vc-donut>
             <span class="infographics__text">
@@ -36,6 +42,7 @@
         <div class="infographics__item">
           <div class="infographics__display stats-item__display">
             <vc-donut
+              class="infographics__donut"
               background="#FEEBEF"
               foreground="#fff"
               :total="100"
@@ -78,6 +85,10 @@ export default {
     percentageOverTenThousand: {
       type: Number,
       required: true
+    },
+    shown: {
+      type: Boolean,
+      required: true
     }
   },
   data() {
@@ -99,6 +110,48 @@ export default {
         this.image = 'assets/img/average-5.svg'
       }
     }
+  },
+  methods: {
+    enter(el) {
+      const width = getComputedStyle(el).width;
+
+      el.style.width = width;
+      // el.style.position = 'absolute';
+      el.style.visibility = 'hidden';
+      el.style.height = 'auto';
+
+      const height = getComputedStyle(el).height;
+
+      el.style.width = null;
+      // el.style.position = null;
+      el.style.visibility = null;
+      el.style.height = 0;
+
+      getComputedStyle(el).height;
+
+
+      requestAnimationFrame(() => {
+        el.style.height = height;
+      });
+    },
+    afterEnter(el) {
+      el.style.height = 'auto';
+      el.scrollIntoView({
+        behavior: 'smooth',
+        block: 'center'
+      })
+    },
+    leave(el) {
+      const height = getComputedStyle(el).height;
+      
+      el.style.height = height;
+
+      getComputedStyle(el).height;
+
+      requestAnimationFrame(() => {
+        el.style.height = 0;
+      });
+    },
   }
 }
 </script>

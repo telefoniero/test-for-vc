@@ -3,6 +3,10 @@
   margin: 0;
 }
 
+*:focus {
+  outline: none;
+}
+
 $mainOrange: #fe4d4a;
 $mainPink: #feebef;
 

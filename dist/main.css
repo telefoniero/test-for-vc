@@ -174,6 +174,10 @@
   margin: 0;
 }
 
+*:focus {
+  outline: none;
+}
+
 @font-face {
   font-family: "Roboto";
   src: url(fonts/056ecee6e5cb26fc62a1ca3080d8c50f.eot), url(fonts/215f2bcde9b288b51a8fc6b32b7e36d5.woff) format("woff"), url(fonts/4f39c5796e60c9d8e7327a00e9a4442e.ttf) format("truetype"), url(fonts/c7b09e56767bc64db593f3f48fbee1b9.otf) format("opentype");
@@ -382,6 +386,9 @@ body {
 .infographics__display {
   margin-left: auto;
   margin-right: auto;
+}
+.infographics__donut {
+  margin-bottom: 36px;
 }
 
 .deposit-option {

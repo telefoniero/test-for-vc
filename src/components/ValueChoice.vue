@@ -19,6 +19,7 @@
             :min="limits[0]"
             :max="limits[1]"
             @change="passValue"
+            @dragging="onDrag"
           >
           <template v-slot:dot>
             <div class="value-range__dot"></div>
@@ -53,6 +54,9 @@ export default {
   methods: {
     passValue() {
       this.$emit('pass-value', this.value)
+    },
+    onDrag() {
+      this.$emit('dragging-value')
     }
   }
 }

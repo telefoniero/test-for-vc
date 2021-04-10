@@ -1,11 +1,16 @@
 <template>
-  <div>
-    <value-choice @pass-value="updating"></value-choice>
+  <div class="widget">
+    <div class="top-test-block"></div>
+    <value-choice
+      @dragging-value="hideFrame"
+      @pass-value="updatingData"
+    ></value-choice>
     <info-frame
       :deferredSum="deferredSum"
       :averageSum="averageSum"
       :percentageOverThousand="percentageOverThousand"
       :percentageOverTenThousand="percentageOverTenThousand"
+      :frameShown="showFrame"
     ></info-frame>
   </div>
 </template>
@@ -23,7 +28,8 @@ export default {
       deferredSum: 0,
       averageSum: 0,
       percentageOverThousand: 0,
-      percentageOverTenThousand: 0
+      percentageOverTenThousand: 0,
+      showFrame: false
     }
   },
   methods: {
@@ -52,7 +58,8 @@ export default {
       this.percentageOverThousand = Math.round((thousand/localStorage.length)*100)
       this.percentageOverTenThousand = Math.round((tenThousand/localStorage.length)*100)
     },
-    updating(value) {
+    updatingData(value) {
+      this.showFrame = true
       this.updateSum(value)
       this.updateAverage()
       this.updateStats()
@@ -60,6 +67,9 @@ export default {
     loaded() {
       this.updateAverage()
       this.updateStats()
+    },
+    hideFrame() {
+      this.showFrame = false
     }
   }
 }

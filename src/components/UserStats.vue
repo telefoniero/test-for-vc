@@ -1,11 +1,11 @@
 <template>
   <transition 
-    name="expand"
-    @enter="enter"
-    @after-enter="afterEnter"
-    @leave="leave"
+    name="show-stats"
+    @enter="enter_stats"
+    @after-enter="afterEnter_stats"
+    @leave="leave_stats"
   >
-    <div class="user-stats" v-if="shown">
+    <div class="user-stats" v-if="statsShown">
       <div class="user-stats__average average-value stats-item">
         <div class="stats-item__display average-value__display">
           <img :src="image" alt="" class="average-value__image">
@@ -86,7 +86,7 @@ export default {
       type: Number,
       required: true
     },
-    shown: {
+    statsShown: {
       type: Boolean,
       required: true
     }
@@ -112,18 +112,18 @@ export default {
     }
   },
   methods: {
-    enter(el) {
+    enter_stats(el) {
       const width = getComputedStyle(el).width;
 
       el.style.width = width;
-      // el.style.position = 'absolute';
+      el.style.position = 'absolute';
       el.style.visibility = 'hidden';
       el.style.height = 'auto';
 
       const height = getComputedStyle(el).height;
 
       el.style.width = null;
-      // el.style.position = null;
+      el.style.position = null;
       el.style.visibility = null;
       el.style.height = 0;
 
@@ -134,14 +134,14 @@ export default {
         el.style.height = height;
       });
     },
-    afterEnter(el) {
+    afterEnter_stats(el) {
       el.style.height = 'auto';
       el.scrollIntoView({
         behavior: 'smooth',
         block: 'center'
       })
     },
-    leave(el) {
+    leave_stats(el) {
       const height = getComputedStyle(el).height;
       
       el.style.height = height;
@@ -151,7 +151,7 @@ export default {
       requestAnimationFrame(() => {
         el.style.height = 0;
       });
-    },
+    }
   }
 }
 </script>

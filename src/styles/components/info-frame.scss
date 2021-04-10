@@ -1,4 +1,7 @@
 .info-frame {
+  transition: 0.5s;
+  overflow: hidden;
+  opacity: 0;
   &__title {
     margin-bottom: 24px;
   }

@@ -219,6 +219,11 @@ body {
   overflow: hidden;
 }
 
+.top-test-block {
+  height: 200px;
+  width: 100%;
+}
+
 .value-choice__title {
   margin-bottom: 11px;
 }
@@ -286,6 +291,11 @@ body {
   box-shadow: 0px 9px 10px rgba(254, 77, 74, 0.1);
 }
 
+.info-frame {
+  transition: 0.5s;
+  overflow: hidden;
+  opacity: 0;
+}
 .info-frame__title {
   margin-bottom: 24px;
 }

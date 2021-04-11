@@ -297,8 +297,11 @@ body {
 
 .info-frame {
   transition: 0.5s;
-  overflow: hidden;
   opacity: 0;
+}
+.info-frame .wrapper {
+  position: relative;
+  overflow: visible;
 }
 .info-frame__title {
   margin-bottom: 24px;
@@ -315,6 +318,42 @@ body {
   align-items: center;
   justify-content: center;
   display: flex;
+}
+.info-frame__popup {
+  position: absolute;
+  color: #fff;
+  background-color: #fe4d4a;
+  border-radius: 5px;
+  width: 300px;
+  font-size: 14px;
+  line-height: 18px;
+  padding: 14px 18px;
+  box-sizing: border-box;
+  background-color: rgba(254, 77, 74, 0.9);
+  box-shadow: 0px 9px 10px rgba(254, 77, 74, 0.1);
+  transition: 0.5s;
+  visibility: hidden;
+  opacity: 0;
+}
+.info-frame__popup a {
+  text-decoration: none;
+  color: inherit;
+}
+.info-frame__popup.visible {
+  opacity: 1;
+  visibility: visible;
+}
+.info-frame__popup::after {
+  content: "";
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 5px 5px 0 5px;
+  border-color: rgba(254, 77, 74, 0.9) transparent transparent transparent;
+  left: var(--left);
+  right: var(--right);
+  top: 100%;
+  position: absolute;
 }
 
 .info-btns__text {
@@ -418,6 +457,7 @@ body {
 }
 .deposit-option__coins {
   width: 100%;
+  margin-bottom: 15px;
 }
 .deposit-option__value {
   color: #fe4d4a;

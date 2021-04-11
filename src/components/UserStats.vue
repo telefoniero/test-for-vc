@@ -91,19 +91,14 @@ export default {
       required: true
     }
   },
-  computed: {
-    image() {
-      if (this.averageSum <= 10000) {
-        return 'assets/img/average-1.svg'
-      } else if (this.averageSum > 11000 && this.averageSum <= 20000 ) {
-        return 'assets/img/average-2.svg'
-      } else if (this.averageSum > 21000 && this.averageSum <= 30000 ) {
-        return 'assets/img/average-3.svg'
-      } else if (this.averageSum > 31000 && this.averageSum <= 40000 ) {
-        return 'assets/img/average-4.svg'
-      } else if (this.averageSum > 41000 && this.averageSum <= 50000 ) {
-        return 'assets/img/average-5.svg'
-      }
+  data() {
+    return {
+      image: localStorage.getItem('imagePath')
+    }
+  },
+  watch: {
+    averageSum() {
+      this.image = localStorage.getItem('imagePath')
     }
   },
   methods: {

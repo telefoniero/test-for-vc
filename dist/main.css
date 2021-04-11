@@ -432,8 +432,10 @@ body {
 .deposit-option__text span {
   margin-right: 7px;
 }
-.deposit-option__link {
+.deposit-option__btn {
   display: inline-block;
+  border: none;
+  cursor: pointer;
   border-radius: 50%;
   background-color: #feebef;
   text-decoration: none;

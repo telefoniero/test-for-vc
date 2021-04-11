@@ -7,7 +7,7 @@
     </span>
     <p class="deposit-option__text text">
       {{noteText}}
-      <a class="deposit-option__link" href="#">?</a>
+      <button class="deposit-option__btn" href="#">?</button>
     </p>
   </div>
 </template>
@@ -23,6 +23,10 @@ export default {
       type: String,
       required: true
     },
+    popupText: {
+      type: String,
+      required: true
+    }
   }
 }
 </script>

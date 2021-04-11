@@ -60,14 +60,12 @@ export default {
       this.percentageOverTenThousand = Math.round((tenThousand/localStorage.length)*100)
     },
     updatingData(value) {
-      this.showFrame = true
-      this.updateSum(value)
-      this.updateAverage()
-      this.updateStats()
-    },
-    loaded() {
-      this.updateAverage()
-      this.updateStats()
+      if (value !== 0) {
+        this.showFrame = true
+        this.updateSum(value)
+        this.updateAverage()
+        this.updateStats()
+      }
     },
     hideFrame() {
       this.showFrame = false

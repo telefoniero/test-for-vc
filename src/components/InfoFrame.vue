@@ -27,6 +27,7 @@
           ></user-stats>
         <toggle-btn
           @toggle-height="toggleStatsHeight"
+          :opened="statsShown"
         ></toggle-btn>
         <div class="info-frame__info-btns info-btns">
           <span class="info-btns__text text">

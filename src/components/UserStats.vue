@@ -136,9 +136,9 @@ export default {
     },
     afterEnter_stats(el) {
       el.style.height = 'auto';
-      el.scrollIntoView({
-        behavior: 'smooth',
-        block: 'center'
+      scrollTo({
+        top: el.offsetTop,
+        behavior: 'smooth'
       })
     },
     leave_stats(el) {

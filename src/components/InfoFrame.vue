@@ -111,7 +111,7 @@ export default {
     afterEnter_frame(el) {
       el.style.height = 'auto';
       el.style.opacity = '1'
-      let top = el.getBoundingClientRect().top
+      let top = el.offsetTop
       scrollTo({
         top: top,
         behavior: 'smooth'

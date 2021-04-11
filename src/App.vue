@@ -12,6 +12,7 @@
       :percentageOverTenThousand="percentageOverTenThousand"
       :frameShown="showFrame"
     ></info-frame>
+    <div class="bottom-test-block"></div>
   </div>
 </template>
 

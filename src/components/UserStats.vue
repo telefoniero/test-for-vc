@@ -8,7 +8,7 @@
     <div class="user-stats" v-if="statsShown">
       <div class="user-stats__average average-value stats-item">
         <div class="stats-item__display average-value__display">
-          <img :src="image" alt="" class="average-value__image">
+          <img :src="image" alt="Масштаб отложенных средств" class="average-value__image">
           <span class="average-value__value">
             ~ {{ averageSum + ' ₽'}}
           </span>

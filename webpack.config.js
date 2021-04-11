@@ -3,7 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const { VueLoaderPlugin } = require('vue-loader')
-const { CopyWebpackPlugin } = require('copy-webpack-plugin')
+const TerserWebpackPlugin = require('terser-webpack-plugin')
 
 let devMode = process.env.npm_lifecycle_event === 'dev'
 
@@ -15,9 +15,17 @@ module.exports = {
     path: path.resolve(__dirname, 'dist')
   },
   optimization: {
-    splitChunks: {
-      chunks: 'all'
-    }
+    minimize: true,
+    minimizer: [
+      new TerserWebpackPlugin({
+        terserOptions: {
+          format: {
+            comments: false
+          }
+        },
+        extractComments: false
+      })
+    ]
   },
   resolve: {
     alias: {
@@ -52,28 +60,70 @@ module.exports = {
         }
       },
       {
+        test: /\.css$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          {
+            loader: 'css-loader',
+            options: {
+              sourceMap: true
+            }
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              postcssOptions: {
+                sourceMap: true,
+                config: path.resolve(__dirname, 'postcss.js')
+              }
+            }
+          }
+        ]
+      },
+      {
         test: /\.s[ac]ss$/,
-        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader']
+        use: [
+          MiniCssExtractPlugin.loader,
+          {
+            loader: 'css-loader',
+            options: {
+              sourceMap: true
+            }
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              postcssOptions: {
+                sourceMap: true,
+                config: path.resolve(__dirname, 'postcss.js')
+              }
+            }
+          },
+          {
+            loader: 'sass-loader',
+            options: {
+              sourceMap: true
+            }
+          }
+        ]
       },
       {
         test: /\.vue$/,
         use: ['vue-loader']
       },
       {
-        test: /\.css$/,
-        use: [MiniCssExtractPlugin.loader, 'css-loader']
-      },
-      {
-        test: /\.(png|jpg|svg|gif)$/,
-        use: {
-          loader: 'file-loader',
-          options: {
-            name: '[name].[ext]',
-            outputPath: 'assets/img',
-            publicPath: 'assets/img',
-            esModule: false
+        test: /\.(png|jpe?g|svg|gif)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+              outputPath: 'assets/img',
+              publicPath: 'assets/img',
+              esModule: false
+            }
           }
-        }
+        ]
       },
       {
         test: /\.(ttf|woff|woff2|eot|otf)$/,

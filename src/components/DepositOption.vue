@@ -1,13 +1,14 @@
 <template>
   <div class="deposit-option">
     <div class="deposit-option__coins">
+      <img src="assets/img/coin.png" alt="Монетка">
     </div>
     <span class="deposit-option__value">
       ~ {{ countedSum + ' ₽'}}
     </span>
     <p class="deposit-option__text text">
       {{noteText}}
-      <button class="deposit-option__btn" type="button" @click="test">?</button>
+      <button class="deposit-option__btn" type="button" @click="showPopup">?</button>
     </p>
   </div>
 </template>
@@ -26,7 +27,7 @@ window.addEventListener('click', evt => {
   if (popup) {
     let idx = parseInt(popup.dataset.popupOrder)
     let btn = document.querySelectorAll('.deposit-option__btn')[idx]
-    if (evt.target.closest('div') !== popup && evt.target !== btn && popup && popup.dataset.popupAction !== 'prepending' ) {
+    if (evt.target.closest('div') !== popup && evt.target !== btn && popup) {
       removingPopup(popup)
     }
   }
@@ -51,7 +52,7 @@ export default {
     }
   },
   methods: {
-    test(event) {
+    showPopup(event) {
       let btn = event.target
       let idx = Array.from(document.querySelectorAll('.deposit-option__btn')).indexOf(btn)
       let parent = btn.closest('.wrapper')
@@ -93,11 +94,35 @@ export default {
           popup.style.setProperty('--left', ` ${150 + btn.offsetWidth/2 - 5}px`)
         }
         popup.style.bottom = `${bottom + 15}px`
+        popup.style.zIndex = '100'
         popup.dataset.popupOrder = `${idx}`
 
         parent.prepend(popup)
       }
+    },
+  },
+  mounted() {
+    let coinEq = parseFloat(localStorage.getItem('coinEquivalent'))
+    let coinsQuantity = Math.ceil(this.countedSum / coinEq)
+    let coinsContainer = this.$el.querySelector('.deposit-option__coins')
+
+    if (coinsContainer.children.length !== 1) {
+      do {
+        coinsContainer.firstChild.remove()
+      }
+      while (coinsContainer.children.length !== 1)
     }
+
+    for (let i = 1; i < coinsQuantity; i++) {
+      let coin = coinsContainer.firstChild.cloneNode()
+      coinsContainer.append(coin)
+    }
+
+    let coins = coinsContainer.querySelectorAll('img')
+    coinsContainer.style.width = `${(coinsQuantity - 1) * 15 + 55}px`
+    coins.forEach((el,idx) => {
+      el.style.left = `${idx * 15}px`
+    })
   }
 }
 </script>

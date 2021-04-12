@@ -130,6 +130,7 @@ export default {
         top: el.offsetTop,
         behavior: 'smooth'
       })
+      
     },
     leave_stats(el) {
       const height = getComputedStyle(el).height;

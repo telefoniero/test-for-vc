@@ -27,7 +27,7 @@ export default {
       options: [{
         rate: 0,
         noteText: 'если складывать под матрас',
-        popupText: 'В этом мало смысла — такие накопления «съедает» инфляция'
+        popupText: 'В этом мало смысла — такие накопления «съедает» инфляция',
       },
       {
         rate: 0.0698,
@@ -47,17 +47,25 @@ export default {
   methods: {
     total(idx) {
       let sum = this.deferredSum
+      function updateCoinEquivalent(sum) {
+        if (Math.round(sum) / 10 > localStorage.getItem('coinEquivalent')) {
+          localStorage.setItem('coinEquivalent', Math.round(sum) / 10)
+        }
+      }
       switch (idx) {
         case 0:
           sum = this.deferredSum * 36
+          updateCoinEquivalent(sum)
           break
         case 1:
           for (let i = 1; i < 35; i++) {
             sum += this.deferredSum * ((1 + this.options[idx].rate / 12) ** i)
           }
+          updateCoinEquivalent(sum)
           break
         case 2:
-            sum = this.deferredSum * 36 * (this.options[idx].rate + 1)
+          sum = this.deferredSum * 36 * (this.options[idx].rate + 1)
+          updateCoinEquivalent(sum)
           break
       }
       return Math.round(sum)

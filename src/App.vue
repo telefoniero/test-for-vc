@@ -70,16 +70,18 @@ export default {
         this.updateAverage()
         this.updateStats()
 
+        localStorage.setItem('coinEquivalent', this.deferredSum * 36 / 10)
+
         if (this.averageSum <= 10000) {
-          localStorage.setItem('imagePath','assets/img/average/average-1.svg')
+          localStorage.setItem('imagePath','assets/img/average/average-1.png')
         } else if (this.averageSum > 11000 && this.averageSum <= 20000 ) {
-          localStorage.setItem('imagePath','assets/img/average/average-2.svg')
+          localStorage.setItem('imagePath','assets/img/average/average-2.png')
         } else if (this.averageSum > 21000 && this.averageSum <= 30000 ) {
-          localStorage.setItem('imagePath','assets/img/average/average-3.svg')
+          localStorage.setItem('imagePath','assets/img/average/average-3.png')
         } else if (this.averageSum > 31000 && this.averageSum <= 40000 ) {
-          localStorage.setItem('imagePath','assets/img/average/average-4.svg')
+          localStorage.setItem('imagePath','assets/img/average/average-4.png')
         } else if (this.averageSum > 41000 && this.averageSum <= 50000 ) {
-          localStorage.setItem('imagePath','assets/img/average/average-5.svg')
+          localStorage.setItem('imagePath','assets/img/average/average-5.png')
         }
       }
     },

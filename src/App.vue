@@ -71,15 +71,15 @@ export default {
         this.updateStats()
 
         if (this.averageSum <= 10000) {
-          localStorage.setItem('imagePath','assets/img/average-1.svg')
+          localStorage.setItem('imagePath','assets/img/average/average-1.svg')
         } else if (this.averageSum > 11000 && this.averageSum <= 20000 ) {
-          localStorage.setItem('imagePath','assets/img/average-2.svg')
+          localStorage.setItem('imagePath','assets/img/average/average-2.svg')
         } else if (this.averageSum > 21000 && this.averageSum <= 30000 ) {
-          localStorage.setItem('imagePath','assets/img/average-3.svg')
+          localStorage.setItem('imagePath','assets/img/average/average-3.svg')
         } else if (this.averageSum > 31000 && this.averageSum <= 40000 ) {
-          localStorage.setItem('imagePath','assets/img/average-4.svg')
+          localStorage.setItem('imagePath','assets/img/average/average-4.svg')
         } else if (this.averageSum > 41000 && this.averageSum <= 50000 ) {
-          localStorage.setItem('imagePath','assets/img/average-5.svg')
+          localStorage.setItem('imagePath','assets/img/average/average-5.svg')
         }
       }
     },

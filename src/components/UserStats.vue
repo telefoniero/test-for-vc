@@ -20,17 +20,12 @@
       <div class="user-stats__infographics infographics stats-item">
         <div class="infographics__item">
           <div class="infographics__display stats-item__display">
-            <vc-donut
-              class="infographics__donut"
-              background="#FEEBEF"
-              foreground="#fff"
-              :total="100"
-              :size="126"
-              :thickness="20"
-              unit="px"
-              :sections="[{value: percentageOverThousand, color: '#FE4D4A'}]"
-            >
-            </vc-donut>
+            <div class="infographics__donut donut-chart">
+              <div class="donut-chart__white-circle"></div>
+                <svg viewBox="0 0 156 156" stroke-dasharray="396px" class="donut-chart__border" style="stroke-dashoffset: 396;">
+                  <circle cx="78" cy="78" r="63" fill="none"></circle>
+                </svg>
+              </div>
             <span class="infographics__text">
               {{percentageOverThousand + ' %'}}
             </span>
@@ -41,17 +36,12 @@
         </div>
         <div class="infographics__item">
           <div class="infographics__display stats-item__display">
-            <vc-donut
-              class="infographics__donut"
-              background="#FEEBEF"
-              foreground="#fff"
-              :total="100"
-              :size="126"
-              :thickness="20"
-              unit="px"
-              :sections="[{value: percentageOverTenThousand, color: '#FE4D4A'}]"
-            >
-            </vc-donut>
+            <div class="infographics__donut donut-chart">
+              <div class="donut-chart__white-circle"></div>
+                <svg viewBox="0 0 156 156" stroke-dasharray="396px" class="donut-chart__border" style="stroke-dashoffset: 396;">
+                  <circle cx="78" cy="78" r="63" fill="none"></circle>
+                </svg>
+              </div>
             <span class="infographics__text">
               {{percentageOverTenThousand + ' %'}}
             </span>
@@ -99,9 +89,25 @@ export default {
   watch: {
     averageSum() {
       this.image = localStorage.getItem('imagePath')
+      this.updateDonuts()
     }
   },
+  mounted() {
+    this.$nextTick(() => {
+      this.updateDonuts()
+    }) 
+  },
   methods: {
+    updateDonuts() {
+      if (this.$el.children) {
+        let donutBorders = this.$el.querySelectorAll('.donut-chart__border');
+        if (donutBorders) {
+          [this.percentageOverThousand, this.percentageOverTenThousand].forEach((data,idx) => {
+            donutBorders[idx].style.strokeDashoffset = `${396 - data / 100 * 396}`
+          })
+        }
+      }
+    },
     enter_stats(el) {
       const width = getComputedStyle(el).width;
 
@@ -130,7 +136,7 @@ export default {
         top: el.offsetTop,
         behavior: 'smooth'
       })
-      
+      this.updateDonuts()
     },
     leave_stats(el) {
       const height = getComputedStyle(el).height;

@@ -72,5 +72,29 @@
   }
   &__donut {
     margin-bottom: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.donut-chart {
+  &__white-circle {
+    width: 126px;
+    height: 126px;
+    border: 15px solid #fff;
+    border-radius: 50%;
+    box-sizing: border-box;
+  }
+  &__border {
+    width: 156px;
+    height: 156px;
+    position: absolute;
+    transform: rotate(-90deg);
+    transition: 0.8s ease-in-out 0.3s;
+    circle {
+      stroke: $mainOrange;
+      stroke-width: 30;
+    }
   }
 }

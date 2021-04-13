@@ -19,7 +19,7 @@
   "bugs": {
     "url": "https://github.com/telefoniero/test-for-vc/issues"
   },
-  "homepage": "https://github.com/telefoniero/test-for-vc#readme",
+  "homepage": "https://telefoniero.github.io/test-for-vc",
   "devDependencies": {
     "@babel/core": "^7.13.14",
     "@babel/preset-env": "^7.13.12",

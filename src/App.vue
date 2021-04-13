@@ -42,7 +42,7 @@ export default {
       this.averageSum = 0
       let valCount = 0
       for (let key of Object.keys(localStorage)) {
-        if (key !== 'imagePath') {
+        if (key !== 'imagePath' || key !== 'coinEquivalent') {
           this.averageSum += parseInt(localStorage.getItem(key))
           valCount++
         }
